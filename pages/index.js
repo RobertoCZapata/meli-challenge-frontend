@@ -1,23 +1,23 @@
-import { ListItem } from "../src/components/ListItem";
-import AppContext from "../src/context/AppContext";
-import { useContext } from "react";
+import { ListItem } from '../src/components/ListItem';
+import { useAppContext } from '../src/context/AppContext';
+import { Results } from '../src/components/Results';
 
 export default function Home() {
-  const { items } = useContext(AppContext);
+  const { items } = useAppContext();
 
   return (
-    <div className="search__items">
-      {items?.map((el) => (
+    <Results>
+      {items?.map((item) => (
         <ListItem
-          key={el.item.id}
-          id={el.item.id}
-          title={el.item.title}
-          image={el.item.picture}
-          price={el.item.price.amount}
-          location={el.item.address.state_name}
-          shipping={el.item.free_shipping}
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          image={item.picture}
+          price={item.price.amount}
+          freeShipping={item.free_shipping}
+          condition={item.condition}
         />
       ))}
-    </div>
+    </Results>
   );
 }

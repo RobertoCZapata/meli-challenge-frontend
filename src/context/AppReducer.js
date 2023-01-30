@@ -1,7 +1,14 @@
-import { GET_ITEMS, GET_ITEM } from "./types";
+import { GET_ITEMS, GET_ITEM, LOADING } from './types';
+
+export const initialState = {
+  items: [],
+  selectedItem: null,
+  filters: [],
+  isLoading: false,
+};
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default (state, action) => {
+const appReducer = (state, action) => {
   const { payload, type } = action;
 
   switch (type) {
@@ -14,9 +21,16 @@ export default (state, action) => {
     case GET_ITEM:
       return {
         ...state,
-        selectedItem: payload,
+        selectedItem: payload.item,
+      };
+    case LOADING:
+      return {
+        ...state,
+        isLoading: payload.isLoading,
       };
     default:
       return state;
   }
 };
+
+export default appReducer;

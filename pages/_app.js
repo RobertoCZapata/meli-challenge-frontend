@@ -1,20 +1,20 @@
-import "../styles/Globals.scss";
-import "../styles/ItemDescription.scss";
-import "../styles/ListItem.scss";
-import "../styles/SearchBar.scss";
-import "../styles/Main.scss";
-import "../styles/Breadcrumb.scss";
+import '../styles/Globals.scss';
+import '../styles/ItemDescription.scss';
+import '../styles/ListItem.scss';
+import '../styles/SearchBar.scss';
+import '../styles/Main.scss';
+import '../styles/Breadcrumb.scss';
 
-import AppState from "../src/context/appState";
-import { Layout } from "../src/components/layout";
+import { Layout } from '../src/components/layout';
+import { AppContextProvider } from '../src/context/AppContext';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AppState>
+    <AppContextProvider>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </AppState>
+    </AppContextProvider>
   );
 }
 

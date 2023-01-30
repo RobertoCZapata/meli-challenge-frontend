@@ -2,7 +2,7 @@ El challenge de Meli-APP fue realizado usando NEXTJS.
 En el Backend use NodeJS y Express, aproveche las bondades de NextJS de Server Side Rendering. Nos conectamos a la API de Mercadolibre.
 Se consumio 2 APIS, una para el Search y otra para mostar la Description del producto.
 La parte de UI realizada con ReactJS, usando Hooks (useEffect y useContext).
-En el proyecto use ContextAPI para manejar el estado dentro del proyecto, ya que es un proyecto pequeño. 
+En el proyecto use ContextAPI para manejar el estado dentro del proyecto, ya que es un proyecto pequeño.
 Se uso SASS como lo mencionaban en la documentacion, aunque Next maneja sus estilos con modulos css.
 
 Instalacion.
@@ -49,3 +49,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Testing
+
+para correr los test yarn test
+para correr test individuales yar test `path`

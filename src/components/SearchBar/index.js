@@ -1,29 +1,38 @@
-import React from "react";
-import { Input, Button } from "reactstrap";
-import Link from "next/link";
+import React, { useState } from 'react';
+import { MdOutlineSearch } from 'react-icons/md';
+import { Button, SearchWrapper, SearchInput, LogoWrapper } from './styled';
 
-import Image from "next/image";
-import searchIcon from "../../../assets/img/ic_Search.png";
-import logoMeli from "../../../assets/img/Logo_ML.png";
+import Image from 'next/image';
+import logoMeli from '../../../assets/img/Logo_ML.png';
+import { useAppContext } from '../../context/AppContext';
 
-export const SearchBar = ({ handleSearchClick, handleChange }) => (
-  <div className="navContainer">
-    <div className="navContainer__logo">
-      <Link href="/">
-        <a>
-          <Image src={logoMeli} alt="LOGO" />
-        </a>
-      </Link>
-    </div>
+export const SearchBar = () => {
+  const [query, setQuery] = useState();
+  const { getItems } = useAppContext();
 
-    <Input
-      className="navContainer__search"
-      name="search"
-      placeholder="Nunca dejes de buscar"
-      onChange={handleChange}
-    />
-    <Button onClick={handleSearchClick} className="navContainer__button">
-      <Image src={searchIcon} alt="SEARCH_ICON" />
-    </Button>
-  </div>
-);
+  const handleSearchClick = () => {
+    getItems(query);
+  };
+
+  const handleChange = (element) => {
+    setQuery(element.target.value);
+  };
+
+  return (
+    <SearchWrapper>
+      <LogoWrapper>
+        <Image src={logoMeli} alt='LOGO' />
+      </LogoWrapper>
+      <SearchInput
+        type='text'
+        name='search'
+        data-testid='search-bar'
+        placeholder='Buscar productos, marcas y mas'
+        onChange={handleChange}
+      />
+      <Button onClick={handleSearchClick}>
+        <MdOutlineSearch size={22} />
+      </Button>
+    </SearchWrapper>
+  );
+};

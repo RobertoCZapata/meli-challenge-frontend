@@ -1,49 +1,64 @@
-import React from "react";
-import Link from "next/link";
-import { formatAsCurrency } from "../../utils/helpers";
-import Image from "next/image";
-import Shipping from "../../../assets/img/ic_shipping.png";
+import React from 'react';
+import Link from 'next/link';
+import { formatAsCurrency } from '../../utils/helpers';
+import Image from 'next/image';
+import Shipping from '../../../assets/img/ic_shipping.png';
+import {
+  Card,
+  ImageWrapper,
+  PriceWrapper,
+  CardContent,
+  CartTitle,
+  Badge,
+} from './styled';
 
-export const ListItem = ({ id, title, price, image, location, shipping }) => {
-  const handleClick = () => {
-    console.log(id);
-  };
-
+export const ListItem = ({
+  id,
+  title,
+  price,
+  image,
+  freeShipping,
+  condition,
+}) => {
   return (
-    <div className="search">
-      <div className="search__wrapper">
-        <div className="search__image">
+    <Card>
+      <ImageWrapper>
+        <Link
+          href={{
+            pathname: '/items/[id]',
+            query: { id },
+          }}
+        >
+          <a>
+            <Image
+              src={image}
+              width={160}
+              height={160}
+              alt='Image Product'
+              style={{ objectFit: 'contain', width: '100%' }}
+            />
+          </a>
+        </Link>
+      </ImageWrapper>
+      <CardContent>
+        <CartTitle>
           <Link
             href={{
-              pathname: "/items/[id]",
+              pathname: '/items/[id]',
               query: { id },
             }}
           >
-            <a>
-              <Image
-                src={image}
-                width={160}
-                height={160}
-                alt="Image Product"
-                style={{ cursor: "pointer" }}
-              />
-            </a>
+            {title}
           </Link>
-        </div>
-        <div className="search__contentWrapper">
-          <p className="search__itemPrice">
-            $ {formatAsCurrency(price)}
-            <span className="search__shipping">
-              {shipping && <Image src={Shipping} alt="Free Shipping" />}
-            </span>
-          </p>
-          <p className="search__itemTitle">{title}</p>
-          <p className="search__desktopLocation">{location}</p>
-        </div>
-        <div className="search__locationWrapper">
-          <p className="search__locationTitle">{location}</p>
-        </div>
-      </div>
-    </div>
+        </CartTitle>
+        <PriceWrapper>
+          <p>$ {formatAsCurrency(price)}</p>
+          <span>
+            {freeShipping && <Image src={Shipping} alt='Free Shipping' />}
+          </span>
+        </PriceWrapper>
+        {condition === 'new' && <Badge>{condition}</Badge>}
+      </CardContent>
+    </Card>
   );
 };

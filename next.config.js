@@ -6,6 +6,10 @@ const nextConfig = {
 module.exports = {
   nextConfig,
   images: {
-    domains: ["http2.mlstatic.com"],
+    domains: ['http2.mlstatic.com'],
+  },
+  compiler: {
+    // Enables the styled-components SWC transform
+    styledComponents: true,
   },
 };

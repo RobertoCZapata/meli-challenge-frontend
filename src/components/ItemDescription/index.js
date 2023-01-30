@@ -1,6 +1,13 @@
-import React from "react";
-import Image from "next/image";
-import { formatAsCurrency } from "../../utils/helpers";
+import React from 'react';
+import Image from 'next/image';
+import { formatAsCurrency } from '../../utils/helpers';
+import {
+  DescriptionWrapper,
+  DescriptionImageWrapper,
+  DescriptionDetailWrapper,
+  Button,
+  DescriptionTextWrapper,
+} from './styled';
 
 export const ItemDescription = ({
   sold_quantity,
@@ -8,34 +15,42 @@ export const ItemDescription = ({
   image,
   description,
   price,
+  condition,
 }) => {
   return (
-    <div className="detail">
-      <div className="detail__container">
-        <div className="detail__image">
+    <>
+      <DescriptionWrapper>
+        <DescriptionImageWrapper>
           {image && (
-            <Image src={image} width={200} height={200} alt="Image Detail" />
+            <div>
+              <Image
+                src={image}
+                width={200}
+                height={200}
+                alt='Image Detail'
+                style={{ objectFit: 'contain', width: '100%' }}
+              />
+            </div>
           )}
-        </div>
-        <div className="detail__header">
-          <div className="detail__subtitle">
-            <span>Nuevo | {sold_quantity} vendidos</span>
+        </DescriptionImageWrapper>
+        <DescriptionDetailWrapper>
+          <span className='subtitle'>
+            {condition} | {sold_quantity} vendidos
+          </span>
+          <h2 className='title'>{title}</h2>
+          <span className='price'>
+            {' '}
+            $ {price?.amount && formatAsCurrency(price?.amount)}
+          </span>
+          <div>
+            <Button>Comprar</Button>
           </div>
-          <div className="detail__titleContainer">
-            <p>{title}</p>
-          </div>
-          <div className="detail__price">
-            <span> $ {formatAsCurrency(price)}</span>
-          </div>
-          <div className="detail__actions">
-            <button className="detail__buttons">Comprar</button>
-          </div>
-        </div>
-      </div>
-      <div className="detail__description">
-        <h2 className="detail__descriptionTitle">Descripcion del producto</h2>
-        <p className="detail__descriptionText">{description}</p>
-      </div>
-    </div>
+        </DescriptionDetailWrapper>
+        <DescriptionTextWrapper>
+          <h2>Descripcion del producto</h2>
+          <p>{description}</p>
+        </DescriptionTextWrapper>
+      </DescriptionWrapper>
+    </>
   );
 };
