@@ -5,8 +5,8 @@ import '../styles/SearchBar.scss';
 import '../styles/Main.scss';
 import '../styles/Breadcrumb.scss';
 
-import { Layout } from '../src/components/layout';
-import { AppContextProvider } from '../src/context/AppContext';
+import { Layout } from 'components/layout';
+import { AppContextProvider } from 'context/AppContext';
 
 function MyApp({ Component, pageProps }) {
   return (

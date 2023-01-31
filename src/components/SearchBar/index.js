@@ -8,10 +8,12 @@ import { useAppContext } from '../../context/AppContext';
 
 export const SearchBar = () => {
   const [query, setQuery] = useState();
-  const { getItems } = useAppContext();
+  const { getItems, changePage } = useAppContext();
 
   const handleSearchClick = () => {
+    localStorage.setItem('query', query);
     getItems(query);
+    changePage(0);
   };
 
   const handleChange = (element) => {

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Head from 'next/head';
 
 import { SearchBar } from '../SearchBar/index';
-import Breadcrumb from '../BreadCrumb/index';
 import { Header, Container } from './styled';
+import PropTypes from 'prop-types';
 
 export const Layout = ({ children }) => {
   return (
@@ -17,10 +17,11 @@ export const Layout = ({ children }) => {
       <Header>
         <SearchBar />
       </Header>
-      <Container>
-        {/* <Breadcrumb /> */}
-        {children}
-      </Container>
+      <Container>{children}</Container>
     </div>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.element,
 };

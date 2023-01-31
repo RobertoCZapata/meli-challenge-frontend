@@ -11,6 +11,7 @@ import {
   CartTitle,
   Badge,
 } from './styled';
+import PropTypes from 'prop-types';
 
 export const ListItem = ({
   id,
@@ -61,4 +62,13 @@ export const ListItem = ({
       </CardContent>
     </Card>
   );
+};
+
+ListItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  freeShipping: PropTypes.bool.isRequired,
+  condition: PropTypes.string.isRequired,
 };

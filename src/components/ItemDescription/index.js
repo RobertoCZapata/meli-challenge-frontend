@@ -8,6 +8,7 @@ import {
   Button,
   DescriptionTextWrapper,
 } from './styled';
+import PropTypes from 'prop-types';
 
 export const ItemDescription = ({
   sold_quantity,
@@ -53,4 +54,15 @@ export const ItemDescription = ({
       </DescriptionWrapper>
     </>
   );
+};
+
+ItemDescription.propTypes = {
+  sold_quantity: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  price: PropTypes.shape({
+    amount: PropTypes.number,
+  }),
+  condition: PropTypes.string.isRequired,
 };
