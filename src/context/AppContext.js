@@ -16,7 +16,7 @@ export const AppContextProvider = ({ children }) => {
     const offset = page * limit;
 
     fetch(
-      `http://localhost:3001/api/items?q=${query}&limit=${limit}&offset=${offset}`
+      `https://meli-challenge-backend-liard.vercel.app/api/items?q=${query}&limit=${limit}&offset=${offset}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -30,7 +30,7 @@ export const AppContextProvider = ({ children }) => {
   const getItem = (id) => {
     dispatch({ type: LOADING, payload: { isLoading: true } });
 
-    fetch(`http://localhost:3001/api/items/${id}`)
+    fetch(`https://meli-challenge-backend-liard.vercel.app/api/items/${id}`)
       .then((response) => response.json())
       .then((data) => dispatch({ type: GET_ITEM, payload: data }))
       .finally(() =>
